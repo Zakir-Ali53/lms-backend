@@ -1,9 +1,13 @@
 const express = require("express");
-const cors = require("cors");
+const cors = require('cors');
 const connectDB=require('./config/db')
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: "*", // Yeh har device aur url ko access deta hai
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+}));
 app.use(express.json());
 connectDB()
 // routes
